@@ -31,7 +31,7 @@
                     </nav>
                 </aside>
                 <main class="flex-1 p-6">
-                    {{ $slot }}
+                    @yield('content')
                 </main>
             </div>
         </div>
