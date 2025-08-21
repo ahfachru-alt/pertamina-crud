@@ -52,6 +52,9 @@ new class extends Component
                     </x-slot>
 
                     <x-slot name="content">
+                        <div class="px-4 py-2">
+                            <livewire:theme-toggle />
+                        </div>
                         <x-dropdown-link :href="route('profile')" wire:navigate>
                             {{ __('Profile') }}
                         </x-dropdown-link>
