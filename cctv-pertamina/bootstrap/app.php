@@ -16,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
             'role_or_permission' => Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         ]);
+        $middleware->append(App\Http\Middleware\TrackLastActivity::class);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
