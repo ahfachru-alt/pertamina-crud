@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\GoogleOAuthController;
 use App\Http\Controllers\Admin\ExportController;
+use App\Http\Controllers\StreamController;
 
 Route::view('/', 'welcome')->name('home');
 
@@ -73,4 +74,10 @@ Route::middleware(['auth','verified','role:User'])->prefix('user')->name('user.'
     Route::view('/room', 'User/Room/index')->name('room');
     Route::view('/cctv', 'User/Cctv/index')->name('cctv');
     Route::view('/contact', 'User/Contact/index')->name('contact');
+});
+
+// Stream controls
+Route::middleware(['auth','verified'])->group(function () {
+    Route::post('/stream/{cctv}/start', [StreamController::class, 'start'])->name('stream.start');
+    Route::delete('/stream/{cctv}/stop', [StreamController::class, 'stop'])->name('stream.stop');
 });
